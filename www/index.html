@@ -83,6 +83,18 @@
                 })
         }
 
+        function searchLevelandAttack() {
+            let level = parseInt($("#level").val(), 10);
+            let TestDataClass = ncmb.DataStore(db);
+            TestDataClass
+                .equalTo("level", level)
+                .order("attack", false)
+                .fetchAll()
+                .then(function(results) {
+                    showResults(results);
+                })
+        }
+
         function showResults(results) {
             // テーブルのヘッダを生成
             let msg = "<table><tr><th>name</th><th>Lvl</th><th>attack</th><th>defence</th></tr>";
@@ -130,6 +142,9 @@
         <br>
         <button class="btnA" onclick="searchAttackAll()">Attack All</button>
         <button class="btnD" onclick="searchDefenceAll()">Defence All</button>
+        <br>
+        <button class="btnA" onclick="searchLevelandAttack()">Level&ampAttack</button>
+        <button class="btnD" onclick="searchLevelandDefence()">Level&ampDefence</button>
     </div>
     <div id="message">message area</div>
 </body>

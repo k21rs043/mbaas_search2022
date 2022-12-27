@@ -29,6 +29,39 @@ input {
   width: 5em;
   border-radius: 10px;
   color: white;
+  background-color: black;
+}
+
+.btnL {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 18pt;
+  height: 4ex;
+  width: 5em;
+  border-radius: 10px;
+  color: yellow;
+  background-color:orange;
+}
+
+.btnA {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 16pt;
+  height: 4ex;
+  width: 7em;
+  border-radius: 10px;
+  color: white;
+  background-color: red;
+}
+
+.btnD {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 16pt;
+  height: 4ex;
+  width: 7em;
+  border-radius: 10px;
+  color: white;
   background-color: blue;
 }
 

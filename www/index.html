@@ -124,7 +124,27 @@
             testClass.set("defence", mdefence);
             // レコードをデータベースに登録
             testClass.save();
-            $("#message").html("Success!");
+            $("#message").html("Add moster!");
+        }
+
+        function DeleteData() {
+            let deleteClass = ncmb.DataStore(db);
+            deleteClass.fetchAll()
+                .then(function(results) {
+                    return results.delete();
+                })
+                /*
+                .then(function(results) {
+                    $("#message").removeClass();
+                    $("#message").addClass("bg-success");
+                    $("#message").html("delete success");
+                })
+                .catch(function(error) {
+                    $("#message").removeClass();
+                    $("#message").addClass("bg-warning");
+                    $("#message").html("delete fail:" + JSON.stringify(error));
+                })
+                */
         }
 
         function showResults(results) {
@@ -180,6 +200,7 @@
         <button class="btnLD" onclick="searchLevelandDefence()">Level&ampDefence</button>
         <br>
         <button id="Add" class="btnAD" onclick="AddData()">Add monster</button>
+        <button id="Delete" class="btnAD" onclick="DeleteData()">Delete monster</button>
     </div>
     <div id="message">message area</div>
 </body>

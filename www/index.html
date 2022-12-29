@@ -19,6 +19,7 @@
             let TestDataClass = ncmb.DataStore(db);
             TestDataClass.order("name", false).fetchAll()
                 .then(function(results) {
+                    
                     showResults(results);
                 })
         }
@@ -128,23 +129,17 @@
         }
 
         function DeleteData() {
-            let deleteClass = ncmb.DataStore(db);
-            deleteClass.fetchAll()
+            let TestDataClass = ncmb.DataStore(db);
+            TestDataClass.fetch()
                 .then(function(results) {
                     return results.delete();
                 })
-                /*
                 .then(function(results) {
-                    $("#message").removeClass();
-                    $("#message").addClass("bg-success");
-                    $("#message").html("delete success");
+                    $("#message").html("Delete success");
                 })
                 .catch(function(error) {
-                    $("#message").removeClass();
-                    $("#message").addClass("bg-warning");
-                    $("#message").html("delete fail:" + JSON.stringify(error));
+                    $("#message").html("Delete fail");
                 })
-                */
         }
 
         function showResults(results) {

@@ -85,10 +85,11 @@
 
         function searchLevelandAttack() {
             let level = parseInt($("#level").val(), 10);
+            let attack = parseInt($("#attack").val());
             let TestDataClass = ncmb.DataStore(db);
             TestDataClass
                 .equalTo("level", level)
-                .order("attack", false)
+                .equalTo("attack", attack)
                 .fetchAll()
                 .then(function(results) {
                     showResults(results);
@@ -97,14 +98,33 @@
 
         function searchLevelandDefence() {
             let level = parseInt($("#level").val(), 10);
+            let defence = parseInt($("#defence").val());
             let TestDataClass = ncmb.DataStore(db);
             TestDataClass
                 .equalTo("level", level)
-                .order("defence", false)
+                .equalTo("defence", defence)
                 .fetchAll()
                 .then(function(results) {
                     showResults(results);
                 })
+        }
+
+        function AddData() {
+            // 登録するレコードを用意
+            let addClass = ncmb.DataStore(db);
+            var testClass = new addClass();
+            let mname = $("#name").val();
+            let mlevel = parseInt($("#level").val(), 10);
+            let mattack = parseInt($("#attack").val());
+            let mdefence = parseInt($("#defence").val());
+            // レコードのフィールドと値を設定
+            testClass.set("name", mname);
+            testClass.set("level", mlevel);
+            testClass.set("attack", mattack);
+            testClass.set("defence", mdefence);
+            // レコードをデータベースに登録
+            testClass.save();
+            $("#message").html("Success!");
         }
 
         function showResults(results) {
@@ -122,6 +142,7 @@
             // テーブルのテイラを生成
             msg += "</table>";
             $("#message").html(msg);
+
         }
     </script>
 </head>
@@ -133,16 +154,16 @@
         <input id="name" type="text" placeholder="monster name">
     </div>
     <div>
+        <input type="text" id="level" placeholder="monster level">
         <label for="level">level:</label>
-        <input id="level" type="number" placeholder="monster level">
     </div>
     <div>
+        <input type="text" id="attack" placeholder="monster attack">
         <label for="attack">attack:</label>
-        <input id="attack" type="number" placeholder="monster attack">
     </div>
     <div>
+        <input type="text" id="defence" placeholder="monster defence">
         <label for="defence">defence:</label>
-        <input id="defence" type="number" placeholder="monster defence">
     </div>
     <div id="button">
         <button class="btn" onclick="fetchAll()">Fetch All</button>
@@ -157,6 +178,8 @@
         <br>
         <button class="btnLA" onclick="searchLevelandAttack()">Level&ampAttack</button>
         <button class="btnLD" onclick="searchLevelandDefence()">Level&ampDefence</button>
+        <br>
+        <button id="Add" class="btnAD" onclick="AddData()">Add monster</button>
     </div>
     <div id="message">message area</div>
 </body>

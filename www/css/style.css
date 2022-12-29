@@ -87,6 +87,18 @@ input {
   background-color: orange;
 }
 
+.btnAD {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 16pt;
+  height: 4ex;
+  width: 8em;
+  border-radius: 10px;
+  color: black;
+  background-color: greenyellow;
+}
+
+
 #message {
   border-style: solid;
   border-color: grey;
